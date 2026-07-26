@@ -1,0 +1,162 @@
+{
+  "$schema": "node_modules/eslint-plugin-project-structure/folderStructure.schema.json",
+  "structureRoot": ".",
+  "structure": [{ "name": "src", "ruleId": "src_folder" }],
+  "rules": {
+    "src_folder": {
+      "name": "src",
+      "children": [
+        { "name": "main.ts" },
+        { "name": "app.module.ts" },
+        { "name": "module", "ruleId": "module_folder" }
+      ]
+    },
+
+    "module_folder": {
+      "name": "module",
+      "children": [
+        { "name": "shared", "ruleId": "shared_module_folder" },
+        { "name": "{kebab-case}", "ruleId": "domain_module_folder" }
+      ]
+    },
+
+    "shared_module_folder": {
+      "name": "shared",
+      "children": [
+        { "name": "{folder-name}.module.ts" },
+        { "name": "domain", "ruleId": "domain_layer_folder" },
+        { "name": "infra", "ruleId": "shared_infra_layer_folder" }
+      ]
+    },
+
+    "shared_infra_layer_folder": {
+      "name": "infra",
+      "children": [
+        { "name": "database", "ruleId": "database_folder" },
+        { "name": "repository", "ruleId": "repository_folder" },
+        {
+          "name": "config",
+          "children": [{ "name": "{kebab-case}.config.ts" }]
+        },
+        {
+          "name": "pipe",
+          "children": [{ "name": "{kebab-case}.pipe.ts" }]
+        },
+        {
+          "name": "controller",
+          "children": [{ "name": "dto", "ruleId": "dto_folder" }]
+        }
+      ]
+    },
+
+    "database_folder": {
+      "name": "database",
+      "children": [
+        { "name": "{kebab-case}.ts" },
+        {
+          "name": "migrations",
+          "children": [{ "name": "*-{PascalCase}.ts" }]
+        }
+      ]
+    },
+
+    "domain_module_folder": {
+      "name": "{kebab-case}",
+      "children": [
+        { "name": "{folder-name}.module.ts" },
+        { "name": "domain", "ruleId": "domain_layer_folder" },
+        { "name": "application", "ruleId": "application_layer_folder" },
+        { "name": "infra", "ruleId": "infra_layer_folder" }
+      ]
+    },
+
+    "domain_layer_folder": {
+      "name": "domain",
+      "children": [{ "name": "{kebab-case}.ts" }]
+    },
+
+    "application_layer_folder": {
+      "name": "application",
+      "children": [{ "name": "use-case", "ruleId": "use_case_folder" }]
+    },
+
+    "use_case_folder": {
+      "name": "use-case",
+      "children": [
+        { "name": "{kebab-case}.use-case.ts" },
+        {
+          "name": "{kebab-case}",
+          "children": [{ "name": "{kebab-case}.use-case.ts" }]
+        }
+      ]
+    },
+
+    "infra_layer_folder": {
+      "name": "infra",
+      "children": [
+        { "name": "controller", "ruleId": "controller_folder" },
+        { "name": "repository", "ruleId": "repository_folder" },
+        { "name": "query", "ruleId": "query_folder" },
+        { "name": "gateway", "ruleId": "gateway_folder" }
+      ]
+    },
+
+    "controller_folder": {
+      "name": "controller",
+      "children": [
+        { "name": "{kebab-case}.controller.ts" },
+        { "name": "dto", "ruleId": "dto_folder" },
+        { "name": "type", "ruleId": "type_folder" }
+      ]
+    },
+
+    "dto_folder": {
+      "name": "dto",
+      "children": [
+        { "name": "{kebab-case}-input.dto.ts" },
+        {
+          "name": "{kebab-case}",
+          "children": [{ "name": "{kebab-case}-input.dto.ts" }]
+        }
+      ]
+    },
+
+    "type_folder": {
+      "name": "type",
+      "children": [
+        { "name": "{kebab-case}-output.type.ts" },
+        {
+          "name": "{kebab-case}",
+          "children": [{ "name": "{kebab-case}-output.type.ts" }]
+        }
+      ]
+    },
+
+    "query_folder": {
+      "name": "query",
+      "children": [
+        { "name": "{kebab-case}.query.ts" },
+        {
+          "name": "{kebab-case}",
+          "children": [{ "name": "{kebab-case}.query.ts" }]
+        }
+      ]
+    },
+
+    "repository_folder": {
+      "name": "repository",
+      "children": [
+        { "name": "{kebab-case}.repository.ts" },
+        {
+          "name": "model",
+          "children": [{ "name": "{kebab-case}.model.ts" }]
+        }
+      ]
+    },
+
+    "gateway_folder": {
+      "name": "gateway",
+      "children": [{ "name": "{kebab-case}.gateway.ts" }]
+    }
+  }
+}
