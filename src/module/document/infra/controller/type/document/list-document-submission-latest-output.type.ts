@@ -5,6 +5,7 @@ export type ListDocumentSubmissionLatestOutput = {
     createdAt: Date;
     documentTypeName: string;
     employeeEmail: string;
+    deletedAt: Date | null;
   }>;
   meta: {
     total: number;

@@ -1,13 +1,21 @@
-import { IsDate } from 'class-validator';
+import { IsDate, IsOptional, IsUUID } from 'class-validator';
 import { Type } from 'class-transformer';
 import { DefaultPaginatedInput } from '../../../../../shared/infra/controller/dto/default-paginated-input.dto';
 
 export class ListDocumentSubmissionLatestInput extends DefaultPaginatedInput {
+  @IsOptional()
   @Type(() => Date)
   @IsDate({ message: 'A data inicial deve ser uma data válida.' })
-  startDate: Date = new Date();
+  startDate?: Date;
 
+  @IsOptional()
   @Type(() => Date)
   @IsDate({ message: 'A data final deve ser uma data válida.' })
-  endDate: Date = new Date();
+  endDate?: Date;
+
+  @IsOptional()
+  @IsUUID('all', {
+    message: 'O código do colaborador deve ser um UUID válido.',
+  })
+  employeeId?: string;
 }

@@ -7,7 +7,7 @@ API REST construída com [NestJS](https://nestjs.com/), TypeORM e PostgreSQL, or
 - **Employee** (`/employee`) — cadastro, listagem, consulta e remoção (soft delete) de colaboradores.
 - **Document Type** (`/document-type`) — cadastro e listagem de tipos de documento.
 - **Requirement** (`/requirement`) — criação, listagem por colaborador e remoção (soft delete) de exigências.
-- **Document** (`/document`) — envio de documento (com versionamento), remoção (soft delete), as consultas por colaborador (últimos envios e pendentes) e as consultas globais de pendências, percentual de entrega e últimos envios.
+- **Document** (`/document`) — envio de documento (com versionamento), remoção (soft delete), a consulta de exigências pendentes do colaborador e as consultas globais de pendências, percentual de entrega e últimos envios (com filtro opcional por colaborador).
 
 Uma **exigência** (`requirement`) é a obrigação de um colaborador entregar um tipo de documento —
 "o colaborador X precisa enviar um comprovante de residência". O documento é a versão enviada para
@@ -43,15 +43,15 @@ provider, sem classe abstrata servindo de interface.
 | GET    | `/requirement/employee/list`       | Exigências de um colaborador (`employeeId`, paginado)              |
 | DELETE | `/requirement/:id`                 | Remove uma exigência (soft delete)                                 |
 | POST   | `/document`                        | Envia um documento (nova versão)                                   |
-| GET    | `/document/employee/latest/list`   | Última versão enviada de cada exigência do colaborador (paginado)  |
 | GET    | `/document/employee/pending/list`  | Exigências do colaborador sem documento enviado (paginado)         |
 | GET    | `/document/frequent/pending`       | Tipos de documento mais frequentemente pendentes                   |
 | GET    | `/document/percentage/submission`  | Percentual global de exigências com documento enviado              |
-| GET    | `/document/submission/latest/list` | Últimos envios (paginado, filtro opcional por período)             |
+| GET    | `/document/submission/latest/list` | Últimos envios (paginado, filtros opcionais por período e por colaborador) |
 | DELETE | `/document/:id`                    | Remove um documento (soft delete)                                  |
 
-Nas rotas de período (`/document/submission/latest/list`), `startDate` e `endDate` são
-opcionais — sem elas, a listagem não filtra por data.
+Em `/document/submission/latest/list`, `startDate`, `endDate` e `employeeId` são opcionais —
+sem eles, a listagem não filtra. Passando `employeeId`, a rota devolve os últimos envios
+daquele colaborador.
 
 ## Pré-requisitos
 

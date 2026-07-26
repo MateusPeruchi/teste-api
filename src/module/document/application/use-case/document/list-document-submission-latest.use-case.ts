@@ -18,6 +18,7 @@ export class ListDocumentSubmissionLatestUseCase {
       await this.listDocumentSubmissionLatestPaginatedQuery.execute({
         startDate: input.startDate,
         endDate: input.endDate,
+        employeeId: input.employeeId,
         page: input.page,
         limit: input.limit,
       });
@@ -37,6 +38,7 @@ export class ListDocumentSubmissionLatestUseCase {
 type input = {
   startDate?: Date;
   endDate?: Date;
+  employeeId?: string;
   page: number;
   limit: number;
 };
@@ -48,6 +50,7 @@ type output = {
     createdAt: Date;
     documentTypeName: string;
     employeeEmail: string;
+    deletedAt: Date | null;
   }>;
   meta: {
     total: number;

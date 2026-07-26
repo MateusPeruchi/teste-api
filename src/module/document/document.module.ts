@@ -21,13 +21,11 @@ import { GetDocumentPercentageSubmissionQuery } from './infra/query/document/get
 import { ListDocumentFrequentPendingQuery } from './infra/query/document/list-document-frequent-pending.query';
 import { ListDocumentSubmissionLatestPaginatedQuery } from './infra/query/document/list-document-submission-latest-paginated.query';
 import { ListDocumentEmployeePendingPaginatedQuery } from './infra/query/document/list-document-employee-pending-paginated.query';
-import { ListDocumentEmployeeLatestPaginatedQuery } from './infra/query/document/list-document-employee-latest-paginated.query';
 import { ListRequirementEmployeePaginatedQuery } from './infra/query/requirement/list-requirement-employee-paginated.query';
 import { ListRequirementEmployeeUseCase } from './application/use-case/requirement/list-requirement-employee.use-case';
 import { CreateDocumentTypeUseCase } from './application/use-case/document-type/create-document-type.use-case';
 import { ListDocumentTypeUseCase } from './application/use-case/document-type/list-document-type.use-case';
 import { ListDocumentFrequentPendingUseCase } from './application/use-case/document/list-document-frequent-pending.use-case';
-import { ListDocumentEmployeeLatestUseCase } from './application/use-case/document/list-document-employee-latest.use-case';
 import { ListDocumentEmployeePendingUseCase } from './application/use-case/document/list-document-employee-pending.use-case';
 import { GetDocumentPercentageSubmissionUseCase } from './application/use-case/document/get-document-percentage-submission.use-case';
 import { ListDocumentSubmissionLatestUseCase } from './application/use-case/document/list-document-submission-latest.use-case';
@@ -56,7 +54,6 @@ import { ListDocumentSubmissionLatestUseCase } from './application/use-case/docu
     CreateDocumentUseCase,
     DeleteDocumentUseCase,
     ListDocumentFrequentPendingUseCase,
-    ListDocumentEmployeeLatestUseCase,
     ListDocumentEmployeePendingUseCase,
     GetDocumentPercentageSubmissionUseCase,
     ListDocumentSubmissionLatestUseCase,
@@ -77,12 +74,6 @@ import { ListDocumentSubmissionLatestUseCase } from './application/use-case/docu
       provide: ListDocumentFrequentPendingQuery,
       useFactory: (dataSource: DataSource) =>
         new ListDocumentFrequentPendingQuery(dataSource),
-      inject: [DataSource],
-    },
-    {
-      provide: ListDocumentEmployeeLatestPaginatedQuery,
-      useFactory: (dataSource: DataSource) =>
-        new ListDocumentEmployeeLatestPaginatedQuery(dataSource),
       inject: [DataSource],
     },
     {
