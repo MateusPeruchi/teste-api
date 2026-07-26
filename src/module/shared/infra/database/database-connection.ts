@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { env } from '../config/env.config';
+import { EmployeeModel } from '../../../employee/infra/repository/model/employee.model';
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'postgres',
@@ -9,7 +10,7 @@ export const dataSourceOptions: DataSourceOptions = {
     username: env.postgres.user,
     password: env.postgres.password,
     database: env.postgres.database,
-    entities: [],
+    entities: [EmployeeModel],
     migrations: [join(__dirname, 'migrations', '*{.ts,.js}')],
     synchronize: false,
 };
