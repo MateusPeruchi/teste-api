@@ -7,11 +7,11 @@ export class ListDocumentEmployeePendingPaginatedQuery {
     const { employeeId, page, limit } = input;
     const offset = (page - 1) * limit;
     const filter = `where r.employee_id = $1
-          and r.deleted_at is null
-          and not exists (select 1
-                            from document d
-                           where d.requirement_id = r.id
-                             and d.deleted_at is null)`;
+                      and r.deleted_at is null
+                      and not exists (select 1
+                                        from document d
+                                       where d.requirement_id = r.id
+                                         and d.deleted_at is null)`;
 
     const rows = await this.dataSource.query<outputQuery[]>(
       `select r.id         as "requirementId",
