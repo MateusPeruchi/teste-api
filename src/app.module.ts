@@ -5,6 +5,7 @@ import { addTransactionalDataSource } from 'typeorm-transactional';
 import { dataSourceOptions } from './module/shared/infra/database/database-connection';
 import { APP_PIPE } from '@nestjs/core';
 import { EmployeeModel } from './module/employee/infra/repository/model/employee.model';
+import { DocumentModule } from './module/document/document.module';
 
 @Module({
     imports: [
@@ -18,6 +19,7 @@ import { EmployeeModel } from './module/employee/infra/repository/model/employee
                 ),
         }),
         EmployeeModel,
+        DocumentModule,
     ],
     providers: [
         {
