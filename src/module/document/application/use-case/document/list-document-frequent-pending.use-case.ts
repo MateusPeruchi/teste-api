@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ListDocumentFrequentPendingQuery } from '../../../infra/query/document/list-document-frequent-pending.query';
+import { ListDocumentFrequentPendingQuery } from '@/module/document/infra/query/document/list-document-frequent-pending.query';
 
 @Injectable()
 export class ListDocumentFrequentPendingUseCase {

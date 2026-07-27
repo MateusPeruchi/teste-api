@@ -1,4 +1,4 @@
-import { UUID } from '../../shared/domain/uuid';
+import { UUID } from '@/module/shared/domain/uuid';
 
 export class Document {
   private id: UUID;

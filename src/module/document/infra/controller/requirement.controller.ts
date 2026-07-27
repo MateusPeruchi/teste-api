@@ -9,13 +9,13 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { UuidParamPipe } from '../../../shared/infra/pipe/uuid-param.pipe';
+import { UuidParamPipe } from '@/module/shared/infra/pipe/uuid-param.pipe';
 import { CreateRequirementInput } from './dto/requirement/create-requirement-input.dto';
-import { CreateRequirementUseCase } from '../../application/use-case/requirement/create-requirement.use-case';
-import { DeleteRequirementUseCase } from '../../application/use-case/requirement/delete-requirement.use-case';
+import { CreateRequirementUseCase } from '@/module/document/application/use-case/requirement/create-requirement.use-case';
+import { DeleteRequirementUseCase } from '@/module/document/application/use-case/requirement/delete-requirement.use-case';
 import { ListRequirementEmployeeInput } from './dto/requirement/list-requirement-employee-input.dto';
 import { ListRequirementEmployeeOutput } from './type/requirement/list-requirement-employee-output.type';
-import { ListRequirementEmployeeUseCase } from '../../application/use-case/requirement/list-requirement-employee.use-case';
+import { ListRequirementEmployeeUseCase } from '@/module/document/application/use-case/requirement/list-requirement-employee.use-case';
 
 @Controller('requirement')
 export class RequirementController {

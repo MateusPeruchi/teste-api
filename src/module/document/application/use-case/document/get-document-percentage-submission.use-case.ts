@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { GetDocumentPercentageSubmissionQuery } from '../../../infra/query/document/get-document-percentage-submission.query';
+import { GetDocumentPercentageSubmissionQuery } from '@/module/document/infra/query/document/get-document-percentage-submission.query';
 
 @Injectable()
 export class GetDocumentPercentageSubmissionUseCase {

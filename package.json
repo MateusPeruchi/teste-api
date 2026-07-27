@@ -11,7 +11,7 @@
     "start:dev": "nest start --watch",
     "compose:up": "docker compose --env-file .env -f docker/docker-compose.yaml up -d",
     "compose:down": "docker compose --env-file .env -f docker/docker-compose.yaml down",
-    "typeorm": "typeorm-ts-node-commonjs -d ./src/module/shared/infra/database/database-connection.ts",
+    "typeorm": "node -r ts-node/register -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d ./src/module/shared/infra/database/database-connection.ts",
     "migration:generate": "npm run typeorm -- migration:generate ./src/module/shared/infra/database/migrations/Migration",
     "migration:create": "typeorm-ts-node-commonjs migration:create ./src/module/shared/infra/database/migrations/Migration",
     "migration:run": "npm run typeorm -- migration:run",
@@ -52,7 +52,9 @@
     "eslint-plugin-project-structure": "^3.14.3",
     "globals": "^17.0.0",
     "prettier": "^3.4.2",
+    "ts-loader": "^9.6.2",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   }

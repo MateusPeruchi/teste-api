@@ -9,15 +9,15 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { UuidParamPipe } from '../../../shared/infra/pipe/uuid-param.pipe';
+import { UuidParamPipe } from '@/module/shared/infra/pipe/uuid-param.pipe';
 import { CreateEmployeeInput } from './dto/create-employee-input.dto';
-import { CreateEmployeeUseCase } from '../../application/use-case/create-employee.use-case';
+import { CreateEmployeeUseCase } from '@/module/employee/application/use-case/create-employee.use-case';
 import { GetEmployeeOutput } from './type/get-employee-output.type';
-import { GetEmployeeUseCase } from '../../application/use-case/get-employee.use-case';
-import { DeleteEmployeeUseCase } from '../../application/use-case/delete-employee.use-case';
+import { GetEmployeeUseCase } from '@/module/employee/application/use-case/get-employee.use-case';
+import { DeleteEmployeeUseCase } from '@/module/employee/application/use-case/delete-employee.use-case';
 import { ListEmployeeOutput } from './type/list-employee-output.type';
 import { ListEmployeeInput } from './dto/list-employee-input.dto';
-import { ListEmployeeUseCase } from '../../application/use-case/list-employee.use-case';
+import { ListEmployeeUseCase } from '@/module/employee/application/use-case/list-employee.use-case';
 
 @Controller('employee')
 export class EmployeeController {

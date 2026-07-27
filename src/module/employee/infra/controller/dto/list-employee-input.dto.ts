@@ -1,6 +1,6 @@
 import { IsBoolean, IsOptional, IsString } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { DefaultPaginatedInput } from '../../../../shared/infra/controller/dto/default-paginated-input.dto';
+import { DefaultPaginatedInput } from '@/module/shared/infra/controller/dto/default-paginated-input.dto';
 
 export class ListEmployeeInput extends DefaultPaginatedInput {
   @IsOptional()

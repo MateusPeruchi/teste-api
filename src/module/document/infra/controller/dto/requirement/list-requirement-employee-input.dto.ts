@@ -1,5 +1,5 @@
 import { IsBoolean, IsNotEmpty, IsUUID } from 'class-validator';
-import { DefaultPaginatedInput } from '../../../../../shared/infra/controller/dto/default-paginated-input.dto';
+import { DefaultPaginatedInput } from '@/module/shared/infra/controller/dto/default-paginated-input.dto';
 import { Transform } from 'class-transformer';
 
 export class ListRequirementEmployeeInput extends DefaultPaginatedInput {

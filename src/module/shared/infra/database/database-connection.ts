@@ -1,10 +1,10 @@
 import { join } from 'node:path';
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { env } from '../config/env.config';
-import { DocumentTypeModel } from '../../../document/infra/repository/model/document-type.model';
-import { EmployeeModel } from '../../../employee/infra/repository/model/employee.model';
-import { DocumentModel } from '../../../document/infra/repository/model/document.model';
-import { RequirementModel } from '../../../document/infra/repository/model/requirement.model';
+import { env } from '@/module/shared/infra/config/env.config';
+import { DocumentTypeModel } from '@/module/document/infra/repository/model/document-type.model';
+import { EmployeeModel } from '@/module/employee/infra/repository/model/employee.model';
+import { DocumentModel } from '@/module/document/infra/repository/model/document.model';
+import { RequirementModel } from '@/module/document/infra/repository/model/requirement.model';
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',

@@ -10,8 +10,8 @@ import {
 import { CreateDocumentTypeInput } from './dto/document-type/create-document-type-input.dto';
 import { ListDocumentTypeInput } from './dto/document-type/list-document-type-input.dto';
 import { ListDocumentTypeOutput } from './type/document-type/list-document-type-output.type';
-import { CreateDocumentTypeUseCase } from '../../application/use-case/document-type/create-document-type.use-case';
-import { ListDocumentTypeUseCase } from '../../application/use-case/document-type/list-document-type.use-case';
+import { CreateDocumentTypeUseCase } from '@/module/document/application/use-case/document-type/create-document-type.use-case';
+import { ListDocumentTypeUseCase } from '@/module/document/application/use-case/document-type/list-document-type.use-case';
 
 @Controller('document-type')
 export class DocumentTypeController {

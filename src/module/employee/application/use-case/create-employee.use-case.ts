@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
-import { Employee } from '../../domain/employee';
-import { EmployeeRepository } from '../../infra/repository/employee.repository';
+import { Employee } from '@/module/employee/domain/employee';
+import { EmployeeRepository } from '@/module/employee/infra/repository/employee.repository';
 
 @Injectable()
 export class CreateEmployeeUseCase {

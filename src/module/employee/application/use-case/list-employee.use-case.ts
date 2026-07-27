@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ListEmployeePaginatedQuery } from '../../infra/query/list-employee-paginated.query';
+import { ListEmployeePaginatedQuery } from '@/module/employee/infra/query/list-employee-paginated.query';
 
 @Injectable()
 export class ListEmployeeUseCase {

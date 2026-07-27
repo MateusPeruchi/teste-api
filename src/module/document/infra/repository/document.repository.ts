@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Document } from '../../domain/document';
+import { Document } from '@/module/document/domain/document';
 import { DocumentModel } from './model/document.model';
-import { DefaultRepository } from '../../../shared/infra/repository/default.repository';
+import { DefaultRepository } from '@/module/shared/infra/repository/default.repository';
 import { DataSource } from 'typeorm';
 
 @Injectable()

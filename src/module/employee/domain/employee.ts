@@ -1,6 +1,6 @@
 import { Email } from './email';
-import { Name } from '../../shared/domain/name';
-import { UUID } from '../../shared/domain/uuid';
+import { Name } from '@/module/shared/domain/name';
+import { UUID } from '@/module/shared/domain/uuid';
 
 export class Employee {
   private id: UUID;

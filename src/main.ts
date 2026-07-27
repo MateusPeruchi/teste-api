@@ -5,7 +5,7 @@ import {
   StorageDriver,
 } from 'typeorm-transactional';
 import { AppModule } from './app.module';
-import { env } from './module/shared/infra/config/env.config';
+import { env } from '@/module/shared/infra/config/env.config';
 
 async function bootstrap() {
   initializeTransactionalContext({ storageDriver: StorageDriver.AUTO });

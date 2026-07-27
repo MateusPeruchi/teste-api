@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { RequirementRepository } from '../../../infra/repository/requirement.repository';
+import { RequirementRepository } from '@/module/document/infra/repository/requirement.repository';
 
 @Injectable()
 export class DeleteRequirementUseCase {

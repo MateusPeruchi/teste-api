@@ -9,20 +9,20 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { UuidParamPipe } from '../../../shared/infra/pipe/uuid-param.pipe';
+import { UuidParamPipe } from '@/module/shared/infra/pipe/uuid-param.pipe';
 import { CreateDocumentInput } from './dto/document/create-document-input.dto';
-import { CreateDocumentUseCase } from '../../application/use-case/document/create-document.use-case';
-import { DeleteDocumentUseCase } from '../../application/use-case/document/delete-document.use-case';
+import { CreateDocumentUseCase } from '@/module/document/application/use-case/document/create-document.use-case';
+import { DeleteDocumentUseCase } from '@/module/document/application/use-case/document/delete-document.use-case';
 import { GetDocumentPercentageSubmissionOutput } from './type/document/get-document-percentage-submission-output.type';
 import { ListDocumentFrequentPendingOutput } from './type/document/list-document-frequent-pending-output.type';
 import { ListDocumentSubmissionLatestOutput } from './type/document/list-document-submission-latest-output.type';
 import { ListDocumentSubmissionLatestInput } from './dto/document/list-document-submission-latest-input.dto';
 import { ListDocumentEmployeePendingOutput } from './type/document/list-document-employee-pending-output.type';
 import { ListDocumentEmployeePendingInput } from './dto/document/list-document-employee-pending-input.dto';
-import { ListDocumentFrequentPendingUseCase } from '../../application/use-case/document/list-document-frequent-pending.use-case';
-import { GetDocumentPercentageSubmissionUseCase } from '../../application/use-case/document/get-document-percentage-submission.use-case';
-import { ListDocumentSubmissionLatestUseCase } from '../../application/use-case/document/list-document-submission-latest.use-case';
-import { ListDocumentEmployeePendingUseCase } from '../../application/use-case/document/list-document-employee-pending.use-case';
+import { ListDocumentFrequentPendingUseCase } from '@/module/document/application/use-case/document/list-document-frequent-pending.use-case';
+import { GetDocumentPercentageSubmissionUseCase } from '@/module/document/application/use-case/document/get-document-percentage-submission.use-case';
+import { ListDocumentSubmissionLatestUseCase } from '@/module/document/application/use-case/document/list-document-submission-latest.use-case';
+import { ListDocumentEmployeePendingUseCase } from '@/module/document/application/use-case/document/list-document-employee-pending.use-case';
 
 @Controller('document')
 export class DocumentController {

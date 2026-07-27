@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { RequirementModel } from './model/requirement.model';
-import { Requirement } from '../../domain/requirement';
-import { DefaultRepository } from '../../../shared/infra/repository/default.repository';
+import { Requirement } from '@/module/document/domain/requirement';
+import { DefaultRepository } from '@/module/shared/infra/repository/default.repository';
 import { DataSource } from 'typeorm';
 
 @Injectable()

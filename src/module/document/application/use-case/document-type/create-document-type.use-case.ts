@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
-import { DocumentType } from '../../../domain/document-type';
-import { DocumentTypeRepository } from '../../../infra/repository/document-type.repository';
+import { DocumentType } from '@/module/document/domain/document-type';
+import { DocumentTypeRepository } from '@/module/document/infra/repository/document-type.repository';
 
 @Injectable()
 export class CreateDocumentTypeUseCase {

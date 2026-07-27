@@ -2,10 +2,10 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { addTransactionalDataSource } from 'typeorm-transactional';
-import { dataSourceOptions } from './module/shared/infra/database/database-connection';
+import { dataSourceOptions } from '@/module/shared/infra/database/database-connection';
 import { APP_PIPE } from '@nestjs/core';
-import { EmployeeModule } from './module/employee/employee.module';
-import { DocumentModule } from './module/document/document.module';
+import { EmployeeModule } from '@/module/employee/employee.module';
+import { DocumentModule } from '@/module/document/document.module';
 
 @Module({
   imports: [

@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { DocumentRepository } from '../../../infra/repository/document.repository';
+import { DocumentRepository } from '@/module/document/infra/repository/document.repository';
 
 @Injectable()
 export class DeleteDocumentUseCase {

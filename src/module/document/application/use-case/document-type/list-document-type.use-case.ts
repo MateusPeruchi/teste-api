@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ListDocumentTypePaginatedQuery } from '../../../infra/query/document-type/list-document-type-paginated.query';
+import { ListDocumentTypePaginatedQuery } from '@/module/document/infra/query/document-type/list-document-type-paginated.query';
 
 @Injectable()
 export class ListDocumentTypeUseCase {

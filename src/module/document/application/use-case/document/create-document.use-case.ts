@@ -5,29 +5,26 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { runInTransaction } from 'typeorm-transactional';
-import { DocumentRepository } from '../../../infra/repository/document.repository';
-import { RequirementRepository } from '../../../infra/repository/requirement.repository';
-import { Document } from '../../../domain/document';
-import { StorageGateway } from '../../../infra/gateway/storage.gateway';
+import { DocumentRepository } from '@/module/document/infra/repository/document.repository';
+import { RequirementRepository } from '@/module/document/infra/repository/requirement.repository';
+import { Document } from '@/module/document/domain/document';
+import { StorageS3 } from '@/module/document/infra/gateway/storage.gateway';
 
 @Injectable()
 export class CreateDocumentUseCase {
   constructor(
     private readonly documentRepository: DocumentRepository,
     private readonly requirementRepository: RequirementRepository,
-    private readonly storageGateway: StorageGateway,
+    private readonly storageS3: StorageS3,
   ) {}
 
   async execute(input: input): Promise<output> {
     const requirement = await this.requirementRepository.getById(
       input.requirementId,
     );
-    if (!requirement) {
-      throw new NotFoundException('Exigência não encontrada.');
-    }
-    if (requirement.getIsDeleted()) {
+    if (!requirement) throw new NotFoundException('Exigência não encontrada.');
+    if (requirement.getIsDeleted())
       throw new ConflictException('Esta exigência foi removida.');
-    }
 
     const documentHistory = await this.documentRepository.listByRequirementId(
       input.requirementId,
@@ -38,9 +35,8 @@ export class CreateDocumentUseCase {
     );
 
     const document = Document.create(input.requirementId, lastVersion);
-
     try {
-      await this.storageGateway.upload(document.getStorageKey(), input.file);
+      await this.storageS3.upload(document.getStorageKey(), input.file);
     } catch (error) {
       throw new InternalServerErrorException(
         'Não foi possível armazenar o documento.',

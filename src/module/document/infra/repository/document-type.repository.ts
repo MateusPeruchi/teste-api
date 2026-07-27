@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { DocumentTypeModel } from './model/document-type.model';
-import { DocumentType } from '../../domain/document-type';
-import { DefaultRepository } from '../../../shared/infra/repository/default.repository';
+import { DocumentType } from '@/module/document/domain/document-type';
+import { DefaultRepository } from '@/module/shared/infra/repository/default.repository';
 
 @Injectable()
 export class DocumentTypeRepository extends DefaultRepository<DocumentTypeModel> {

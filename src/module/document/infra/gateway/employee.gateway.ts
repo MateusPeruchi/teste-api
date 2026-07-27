@@ -2,16 +2,12 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { env } from '../../../shared/infra/config/env.config';
 
-export type GetEmployeeByIdOutput = {
-  id: string;
-  name: string;
-  email: string;
-  createdAt: Date;
-  deletedAt: Date | null;
-};
+export abstract class EmployeeGatewayHttp {
+  abstract getById(id: string): Promise<GetEmployeeByIdOutput | null>;
+}
 
 @Injectable()
-export class EmployeeGateway {
+export class EmployeeGateway implements EmployeeGatewayHttp {
   async getById(id: string): Promise<GetEmployeeByIdOutput | null> {
     try {
       const response = await axios.get<GetEmployeeByIdOutput>(
@@ -26,3 +22,11 @@ export class EmployeeGateway {
     }
   }
 }
+
+export type GetEmployeeByIdOutput = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+  deletedAt: Date | null;
+};

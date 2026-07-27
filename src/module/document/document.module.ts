@@ -10,8 +10,10 @@ import { DocumentController } from './infra/controller/document.controller';
 import { DocumentTypeRepository } from './infra/repository/document-type.repository';
 import { DocumentRepository } from './infra/repository/document.repository';
 import { RequirementRepository } from './infra/repository/requirement.repository';
-import { EmployeeGateway } from './infra/gateway/employee.gateway';
-import { StorageGateway } from './infra/gateway/storage.gateway';
+import {
+  EmployeeGateway,
+  EmployeeGatewayHttp,
+} from './infra/gateway/employee.gateway';
 import { CreateRequirementUseCase } from './application/use-case/requirement/create-requirement.use-case';
 import { DeleteRequirementUseCase } from './application/use-case/requirement/delete-requirement.use-case';
 import { CreateDocumentUseCase } from './application/use-case/document/create-document.use-case';
@@ -29,6 +31,7 @@ import { ListDocumentFrequentPendingUseCase } from './application/use-case/docum
 import { ListDocumentEmployeePendingUseCase } from './application/use-case/document/list-document-employee-pending.use-case';
 import { GetDocumentPercentageSubmissionUseCase } from './application/use-case/document/get-document-percentage-submission.use-case';
 import { ListDocumentSubmissionLatestUseCase } from './application/use-case/document/list-document-submission-latest.use-case';
+import { StorageFake, StorageS3 } from './infra/gateway/storage.gateway';
 
 @Module({
   imports: [
@@ -94,8 +97,14 @@ import { ListDocumentSubmissionLatestUseCase } from './application/use-case/docu
         new ListDocumentSubmissionLatestPaginatedQuery(dataSource),
       inject: [DataSource],
     },
-    EmployeeGateway,
-    StorageGateway,
+    {
+      provide: StorageS3,
+      useClass: StorageFake,
+    },
+    {
+      provide: EmployeeGatewayHttp,
+      useClass: EmployeeGateway,
+    },
   ],
 })
 export class DocumentModule {}

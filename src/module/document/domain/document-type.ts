@@ -1,5 +1,5 @@
-import { Name } from '../../shared/domain/name';
-import { UUID } from '../../shared/domain/uuid';
+import { Name } from '@/module/shared/domain/name';
+import { UUID } from '@/module/shared/domain/uuid';
 
 export class DocumentType {
   private id: UUID;

@@ -1,6 +1,6 @@
 import { IsDate, IsOptional, IsUUID } from 'class-validator';
 import { Type } from 'class-transformer';
-import { DefaultPaginatedInput } from '../../../../../shared/infra/controller/dto/default-paginated-input.dto';
+import { DefaultPaginatedInput } from '@/module/shared/infra/controller/dto/default-paginated-input.dto';
 
 export class ListDocumentSubmissionLatestInput extends DefaultPaginatedInput {
   @IsOptional()

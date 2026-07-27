@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { EmployeeRepository } from '../../infra/repository/employee.repository';
+import { EmployeeRepository } from '@/module/employee/infra/repository/employee.repository';
 
 @Injectable()
 export class GetEmployeeUseCase {

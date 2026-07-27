@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { ListDocumentSubmissionLatestPaginatedQuery } from '../../../infra/query/document/list-document-submission-latest-paginated.query';
+import { ListDocumentSubmissionLatestPaginatedQuery } from '@/module/document/infra/query/document/list-document-submission-latest-paginated.query';
 
 @Injectable()
 export class ListDocumentSubmissionLatestUseCase {
