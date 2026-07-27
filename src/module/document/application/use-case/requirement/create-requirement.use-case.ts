@@ -18,21 +18,19 @@ export class CreateRequirementUseCase {
 
   async execute(input: input): Promise<output> {
     const employee = await this.employeeGatewayHttp.getById(input.employeeId);
-    if (!employee || employee.deletedAt) {
+    if (!employee || employee.deletedAt)
       throw new NotFoundException('Colaborador não encontrado.');
-    }
 
-    const documentType = await this.documentTypeRepository.getById(
+    const documentTypeExists = await this.documentTypeRepository.existsById(
       input.documentTypeId,
     );
-    if (!documentType) {
+    if (!documentTypeExists)
       throw new NotFoundException('Tipo de documento não encontrado.');
-    }
 
     const requirementAlreadyExists =
       await this.requirementRepository.existsByEmployeeAndDocumentType({
         employeeId: employee.id,
-        documentTypeId: documentType.getDocumentTypeId(),
+        documentTypeId: input.documentTypeId,
       });
     if (requirementAlreadyExists) {
       throw new ConflictException(

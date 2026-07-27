@@ -7,9 +7,7 @@ export class DeleteEmployeeUseCase {
 
   async execute(input: input): Promise<void> {
     const employee = await this.employeeRepository.getById(input.id);
-    if (!employee) {
-      throw new NotFoundException('Colaborador não encontrado.');
-    }
+    if (!employee) throw new NotFoundException('Colaborador não encontrado.');
     if (!employee.getIsDeleted()) {
       employee.delete();
       await this.employeeRepository.persist(employee);

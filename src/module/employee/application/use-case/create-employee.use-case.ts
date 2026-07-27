@@ -7,12 +7,11 @@ export class CreateEmployeeUseCase {
   constructor(private readonly employeeRepository: EmployeeRepository) {}
 
   async execute(input: input): Promise<output> {
-    const existingEmployeeForEmail = await this.employeeRepository.getByEmail(
+    const employeeAlreadyExists = await this.employeeRepository.existsByEmail(
       input.email,
     );
-    if (existingEmployeeForEmail) {
+    if (employeeAlreadyExists)
       throw new ConflictException('Colaborador já cadastrado.');
-    }
 
     const employee = Employee.create(input.name, input.email);
     await this.employeeRepository.persist(employee);

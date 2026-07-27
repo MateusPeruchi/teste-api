@@ -7,10 +7,7 @@ export class DeleteDocumentUseCase {
 
   async execute(input: input): Promise<void> {
     const document = await this.documentRepository.getById(input.id);
-    if (!document) {
-      throw new NotFoundException('Documento não encontrado.');
-    }
-
+    if (!document) throw new NotFoundException('Documento não encontrado.');
     if (!document.getIsDeleted()) {
       document.delete();
       await this.documentRepository.persist(document);

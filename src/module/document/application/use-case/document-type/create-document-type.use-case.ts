@@ -9,11 +9,10 @@ export class CreateDocumentTypeUseCase {
   ) {}
 
   async execute(input: input): Promise<output> {
-    const existingDocumentTypeForName =
-      await this.documentTypeRepository.getByName(input.name);
-    if (existingDocumentTypeForName) {
+    const documentTypeAlreadyExists =
+      await this.documentTypeRepository.existsByName(input.name);
+    if (documentTypeAlreadyExists)
       throw new ConflictException('Tipo de documento já cadastrado.');
-    }
 
     const documentType = DocumentType.create(input.name);
     await this.documentTypeRepository.persist(documentType);

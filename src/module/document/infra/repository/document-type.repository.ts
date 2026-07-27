@@ -19,19 +19,13 @@ export class DocumentTypeRepository extends DefaultRepository<DocumentTypeModel>
     await this.save(model);
   }
 
-  async getById(id: string): Promise<DocumentType | null> {
-    const model = await this.findOne({ where: { id } });
-    if (model) {
-      return new DocumentType(model.id, model.name, model.createdAt);
-    }
-    return null;
+  async existsById(id: string): Promise<boolean> {
+    const exists = await this.exists({ where: { id } });
+    return exists;
   }
 
-  async getByName(name: string): Promise<DocumentType | null> {
-    const model = await this.findOne({ where: { name } });
-    if (model) {
-      return new DocumentType(model.id, model.name, model.createdAt);
-    }
-    return null;
+  async existsByName(name: string): Promise<boolean> {
+    const exists = await this.exists({ where: { name } });
+    return exists;
   }
 }

@@ -38,20 +38,11 @@ export class EmployeeRepository extends DefaultRepository<EmployeeModel> {
     return null;
   }
 
-  async getByEmail(email: string): Promise<Employee | null> {
-    const model = await this.findOne({
+  async existsByEmail(email: string): Promise<boolean> {
+    const exists = await this.exists({
       where: { email },
       withDeleted: true,
     });
-    if (model) {
-      return new Employee(
-        model.id,
-        model.name,
-        model.email,
-        model.createdAt,
-        model.deletedAt,
-      );
-    }
-    return null;
+    return exists;
   }
 }

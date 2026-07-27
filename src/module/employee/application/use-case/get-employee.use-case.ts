@@ -7,9 +7,7 @@ export class GetEmployeeUseCase {
 
   async execute(input: input): Promise<output> {
     const employee = await this.employeeRepository.getById(input.id);
-    if (!employee) {
-      throw new NotFoundException('Colaborador não encontrado.');
-    }
+    if (!employee) throw new NotFoundException('Colaborador não encontrado.');
     return {
       id: employee.getEmployeeId(),
       name: employee.getName(),
