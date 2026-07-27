@@ -6,9 +6,8 @@ export class UUID {
   private value: string;
 
   constructor(uuid: string) {
-    if (!uuid || !UUID.PATTERN.test(uuid)) {
+    if (!uuid || !UUID.PATTERN.test(uuid))
       throw new BadRequestException('UUID inválido.');
-    }
     this.value = uuid;
   }
 

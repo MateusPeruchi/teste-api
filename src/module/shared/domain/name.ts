@@ -4,9 +4,7 @@ export class Name {
   private value: string;
 
   constructor(name: string) {
-    if (!name) {
-      throw new BadRequestException('Nome inválido.');
-    }
+    if (!name) throw new BadRequestException('Nome inválido.');
     this.value = name;
   }
 

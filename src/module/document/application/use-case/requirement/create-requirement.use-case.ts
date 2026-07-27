@@ -32,11 +32,10 @@ export class CreateRequirementUseCase {
         employeeId: employee.id,
         documentTypeId: input.documentTypeId,
       });
-    if (requirementAlreadyExists) {
+    if (requirementAlreadyExists)
       throw new ConflictException(
         'Já existe uma exigência deste tipo de documento para o colaborador.',
       );
-    }
 
     const requirement = Requirement.create(
       input.employeeId,
