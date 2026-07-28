@@ -38,6 +38,15 @@ export class RequirementRepository extends DefaultRepository<RequirementModel> {
     return null;
   }
 
+  async existsById(requirementId: string): Promise<boolean> {
+    const exists = await this.exists({
+      where: {
+        id: requirementId,
+      },
+    });
+    return exists;
+  }
+
   async existsByEmployeeAndDocumentType(input: {
     employeeId: string;
     documentTypeId: string;

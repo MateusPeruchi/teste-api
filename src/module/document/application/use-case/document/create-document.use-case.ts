@@ -1,5 +1,4 @@
 import {
-  ConflictException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
@@ -19,12 +18,11 @@ export class CreateDocumentUseCase {
   ) {}
 
   async execute(input: input): Promise<output> {
-    const requirement = await this.requirementRepository.getById(
+    const requirement = await this.requirementRepository.existsById(
       input.requirementId,
     );
-    if (!requirement) throw new NotFoundException('Exigência não encontrada.');
-    if (requirement.getIsDeleted())
-      throw new ConflictException('Esta exigência foi removida.');
+    if (!requirement)
+      throw new NotFoundException('Exigência não encontrada ou já removida.');
 
     const documentHistory = await this.documentRepository.listByRequirementId(
       input.requirementId,
